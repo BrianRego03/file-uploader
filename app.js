@@ -11,6 +11,7 @@ const app=express();
 const indexRouter=require("./routers/indexRouter");
 const loginRouter=require("./routers/loginRouter");
 const signUpRouter=require("./routers/signUpRouter");
+const logOutRouter=require("./routers/logoutRouter");
 const initializeAuth=require("./config/passport-config");
 
 app.use(express.urlencoded({extended:true}));
@@ -49,6 +50,7 @@ app.use((req,res,next)=>{
 app.use("/",indexRouter);
 app.use("/signup",signUpRouter);
 app.use("/login",loginRouter);
+app.use("/logout",logOutRouter);
 
 const PORT = 3000;
 app.listen(PORT,()=>{
