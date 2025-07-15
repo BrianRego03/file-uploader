@@ -71,4 +71,20 @@ async function fetchUserById(id) {
     
 }
 
-export {fetchUserById,fetchUserByName,createFile,createFolder,createUser};
+async function checkAllUsers(username) {
+    const user=await prisma.user.findUnique({
+        where:{
+            name:username
+        }
+    });
+
+    if(user){
+        return 0;
+    }else{
+        return 1;
+    }
+
+    
+}
+
+export {fetchUserById,fetchUserByName,createFile,createFolder,createUser,checkAllUsers};
