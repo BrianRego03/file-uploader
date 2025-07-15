@@ -59,3 +59,14 @@ async function fetchUserByName(username) {
     return user;
     
 }
+
+async function fetchUserById(id) {
+    const user= await prisma.user.findUnique({
+        where:{
+            id:id
+        }
+    });
+
+    return user;
+    
+}
