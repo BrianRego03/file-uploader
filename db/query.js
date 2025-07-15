@@ -48,3 +48,14 @@ async function createFile(fileName,parentid){
     });
     return file.id;
 }
+
+async function fetchUserByName(username) {
+    const user= await prisma.user.findUnique({
+        where:{
+            name:username
+        }
+    });
+
+    return user;
+    
+}
