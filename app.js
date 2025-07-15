@@ -9,6 +9,8 @@ import prisma from "./db/prismaClient";
 
 const app=express();
 
+const initializeAuth=require("./config/passport-config");
+
 app.use(express.urlencoded({extended:true}));
 
 app.use(
