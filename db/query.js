@@ -36,3 +36,15 @@ async function createFolder(folderName,parentid){
     return folder.id;
 }
 
+async function createFile(fileName,parentid){
+    const file=await prisma.file.create({
+        data:{
+            name:fileName,
+            parentid: parentid
+        },
+        select:{
+            id:true
+        }
+    });
+    return file.id;
+}
