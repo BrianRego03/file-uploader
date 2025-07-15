@@ -1,6 +1,10 @@
 const bcrypt=require("bcryptjs");
 const {createUser,checkAllUsers}=require("../db/query");
 
+const loadSignUp=(req,res)=>{
+    res.render("signUp");
+}
+
 const saveUser=async(req,res,next)=>{
     try{
         const dbStatus = await checkAllUsers(req.body.username);
@@ -17,4 +21,4 @@ const saveUser=async(req,res,next)=>{
     }
 }
 
-module.exports={saveUser};
+module.exports={saveUser,loadSignUp};
