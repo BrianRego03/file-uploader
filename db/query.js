@@ -71,4 +71,4 @@ async function fetchUserById(id) {
     
 }
 
-export {fetchUserById,fetchUserByName};
+export {fetchUserById,fetchUserByName,createFile,createFolder,createUser};
