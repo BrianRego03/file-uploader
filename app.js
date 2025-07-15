@@ -45,3 +45,7 @@ app.use((req,res,next)=>{
 
 app.use("/signup",signUpRouter);
 
+const PORT = 3000;
+app.listen(PORT,()=>{
+    console.log("we're good")
+})
