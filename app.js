@@ -9,6 +9,8 @@ import prisma from "./db/prismaClient";
 
 const app=express();
 
+app.use(express.urlencoded({extended:true}));
+
 app.use(
     session(
         {
@@ -29,3 +31,4 @@ app.use(
         }
     )
 )
+
