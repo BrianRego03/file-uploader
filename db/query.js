@@ -70,3 +70,5 @@ async function fetchUserById(id) {
     return user;
     
 }
+
+export {fetchUserById,fetchUserByName};
