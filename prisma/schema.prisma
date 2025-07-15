@@ -36,7 +36,7 @@ model file{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  parent folder @relation(fields: [parentid],references: [id])
+  parent folder @relation(fields: [parentid],references: [id],onDelete: Cascade)
   parentid Int
 
 }
@@ -47,10 +47,10 @@ model folder{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  user user @relation(fields: [userid], references: [id])
+  user user @relation(fields: [userid], references: [id],onDelete: Cascade)
   userid Int
 
-  parent folder? @relation("folderConnect",fields: [parentid],references: [id])
+  parent folder? @relation("folderConnect",fields: [parentid],references: [id],onDelete: Cascade)
   parentid Int?
   children folder[] @relation("folderConnect")
 
