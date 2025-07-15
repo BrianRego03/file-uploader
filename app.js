@@ -1,11 +1,10 @@
-const path =require("node:path");
+const path = require("node:path");
 
 const express =require("express");
 const session =require("express-session");
 const passport =require("passport");
 const{PrismaSessionStore}=require('@quixo3/prisma-session-store');
-import { PrismaClient } from "@prisma/client";
-import prisma from "./db/prismaClient";
+const { PrismaClient } = require("./generated/prisma");
 
 const app=express();
 
@@ -15,6 +14,8 @@ const signUpRouter=require("./routers/signUpRouter");
 const initializeAuth=require("./config/passport-config");
 
 app.use(express.urlencoded({extended:true}));
+app.set("views",path.join(__dirname,"views"));
+app.set("view engine","ejs");
 
 app.use(
     session(
@@ -38,7 +39,7 @@ app.use(
 )
 
 initializeAuth();
-app.use(passport.session);
+app.use(passport.session());
 
 app.use((req,res,next)=>{
     res.locals.user=req.user;

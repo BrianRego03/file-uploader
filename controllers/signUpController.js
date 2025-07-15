@@ -7,6 +7,7 @@ const loadSignUp=(req,res)=>{
 
 const saveUser=async(req,res,next)=>{
     try{
+        console.log(req.body);
         const dbStatus = await checkAllUsers(req.body.username);
         if(dbStatus){
             res.redirect("/signup");

@@ -1,4 +1,4 @@
-import prisma from "./prismaClient";
+const prisma =require("./prismaClient");
 
 async function createUser(username,password){
     const user = await prisma.user.create({
@@ -87,4 +87,4 @@ async function checkAllUsers(username) {
     
 }
 
-export {fetchUserById,fetchUserByName,createFile,createFolder,createUser,checkAllUsers};
+module.exports= {fetchUserById,fetchUserByName,createFile,createFolder,createUser,checkAllUsers};

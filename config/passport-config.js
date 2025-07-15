@@ -1,4 +1,4 @@
-import { fetchUserById,fetchUserByName } from "../db/query";
+const { fetchUserById,fetchUserByName } = require("../db/query") ;
 const passport=require("passport");
 const localStrategy=require("passport-local").Strategy;
 const bcrypt=require("bcryptjs");
@@ -39,4 +39,4 @@ function initializeAuth(){
     });
 }
 
-module.exports={initializeAuth};
+module.exports=initializeAuth;
