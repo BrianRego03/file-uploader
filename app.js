@@ -9,6 +9,7 @@ import prisma from "./db/prismaClient";
 
 const app=express();
 
+const signUpRouter=require("./routers/signUpRouter");
 const initializeAuth=require("./config/passport-config");
 
 app.use(express.urlencoded({extended:true}));
@@ -33,4 +34,14 @@ app.use(
         }
     )
 )
+
+initializeAuth();
+app.use(passport.session);
+
+app.use((req,res,next)=>{
+    res.locals.user=req.user;
+    next();
+})
+
+app.use("/signup",signUpRouter);
 
