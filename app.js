@@ -9,6 +9,8 @@ import prisma from "./db/prismaClient";
 
 const app=express();
 
+const indexRouter=require("./routers/indexRouter");
+const loginRouter=require("./routers/loginRouter");
 const signUpRouter=require("./routers/signUpRouter");
 const initializeAuth=require("./config/passport-config");
 
@@ -43,7 +45,9 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.use("/",indexRouter);
 app.use("/signup",signUpRouter);
+app.use("/login",loginRouter);
 
 const PORT = 3000;
 app.listen(PORT,()=>{
