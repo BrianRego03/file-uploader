@@ -6,11 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/signup">Create account</a>
+
     <div>
         <% if(user){ %>
-            <div>Greetings <%= user.name %></div>
-        <% } %>
+            <div>Greetings <%= user.name %>
+            </div>
+            <a href="/logout">Log out</a>
+            <% }else{ %>
+                <a href="/signup">Create account</a>
+                <a href="/login">Log in</a>
+                <% } %>
+
     </div>
 </body>
 </html>

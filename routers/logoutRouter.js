@@ -1,5 +1,5 @@
 const {Router}=require("express");
-const{handleLogOut}=require("../controllers/logOutControllers")
+const{handleLogOut}=require("../controllers/logoutController")
 
 logOutRouter=Router();
 
