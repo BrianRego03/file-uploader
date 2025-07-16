@@ -9,9 +9,22 @@
 <body>
     <div>
         <% if(folder){ %>
-            <div><%= folder.name %></div>
+            <div style="margin-bottom: 10px;"><%= folder.name %></div>
+            <% if(folder.children.length > 0){ %>
+                <% for(let i=0;i< folder.children.length;i++){ %>
+                    <div style="margin-left: 20px;margin-top: 10px; margin-bottom: 10px;">
+                        <a href="/drive/<%= folder.children[i].id %>" >
+                            <%= folder.children[i].name %>
+                        </a>
+                    
+                    </div>
+                <% } %>
+            <% } %>
 
             <div><button onclick="toggleForm()" type="button">Add folder</button> </div>
+            <% if(folder.parentid){ %>
+                <div><a href="/drive/<%= folder.parentid %>" >Back</a> </div>
+            <% } %>
             
         <% } %>
     </div>
