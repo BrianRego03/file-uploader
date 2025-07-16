@@ -57,7 +57,7 @@
 
     </div>
     <div id="fileForm" style="display: none;">
-        <form method="post" action="/drive/file/create">
+        <form method="post" action="/drive/file/create" enctype="multipart/form-data">
             <input type="hidden" name="parentid" value=<%= folder.id %>>
             <div>Create file</div>
             <input type="file" name="file">

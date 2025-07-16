@@ -37,16 +37,18 @@ async function createFolder(folderName,parentid,userid){
     return folder.parentid;
 }
 
-async function createFile(fileName,parentid){
+async function createFile(fileName,parentid,size){
     const file=await prisma.file.create({
         data:{
             name:fileName,
-            parentid: parentid
+            parentid: parentid,
+            size:size
         },
         select:{
             parentid:true
         }
     });
+    // console.log(parentid);
     return file.parentid;
 }
 
@@ -94,7 +96,8 @@ async function fetchFolderByID(id){
             id:id
         },
         include:{
-            children:true
+            children:true,
+            file:true
         }
     });
     return folder;
