@@ -21,19 +21,20 @@ async function createUser(username,password){
     return;
 }
 
-async function createFolder(folderName,parentid){
+async function createFolder(folderName,parentid,userid){
     const folder = await prisma.folder.create(
         {
             data: {
                 name: folderName,
-                parentid: parentid
+                parentid: parentid,
+                userid:userid
             },
             select: {
-                id: true
+                parentid: true
             }
         }
     )
-    return folder.id;
+    return folder.parentid;
 }
 
 async function createFile(fileName,parentid){
@@ -91,6 +92,9 @@ async function fetchFolderByID(id){
     const folder=await prisma.folder.findUnique({
         where:{
             id:id
+        },
+        include:{
+            children:true
         }
     });
     return folder;

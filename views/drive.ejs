@@ -17,6 +17,7 @@
     </div>
     <div id="folderForm" style="display: none;">
         <form method="post" action="/drive/create">
+            <input type="hidden" name="parentid" value=<%= folder.id %>>
             <div>Create Folder</div>
             <label for="name">Folder Name</label>
             <input type="text" name="name">
