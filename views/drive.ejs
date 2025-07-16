@@ -20,8 +20,23 @@
                     </div>
                 <% } %>
             <% } %>
+            <% if(folder.file.length > 0){ %>
+                <% for(let i=0;i< folder.file.length;i++){ %>
+                    <div style="margin-left: 20px;margin-top: 10px; margin-bottom: 10px;">
+                        <a href="/drive/file/<%= folder.file[i].id %>" >
+                            <%= folder.file[i].name %>
+                        </a>
+                    
+                    </div>
+                <% } %>
+            <% } %>
 
-            <div><button onclick="toggleForm()" type="button">Add folder</button> </div>
+            <div style="margin-top: 10px;margin-bottom: 10px;">
+                <button onclick="toggleForm()" type="button">Add folder</button> 
+            </div>
+            <div style="margin-top: 10px;margin-bottom: 10px;">
+                <button onclick="toggleFileForm()" type="button">Add file</button> 
+            </div>
             <% if(folder.parentid){ %>
                 <div><a href="/drive/<%= folder.parentid %>" >Back</a> </div>
             <% } %>
@@ -34,6 +49,16 @@
             <div>Create Folder</div>
             <label for="name">Folder Name</label>
             <input type="text" name="name">
+            <button type="submit">Create</button>
+
+        </form>
+
+    </div>
+    <div id="fileForm" style="display: none;">
+        <form method="post" action="/drive/file/create">
+            <input type="hidden" name="parentid" value=<%= folder.id %>>
+            <div>Create file</div>
+            <input type="file" name="file">
             <button type="submit">Create</button>
 
         </form>
