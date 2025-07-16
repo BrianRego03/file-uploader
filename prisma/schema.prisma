@@ -35,6 +35,7 @@ model file{
   name String 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  size Int
 
   parent folder @relation(fields: [parentid],references: [id],onDelete: Cascade)
   parentid Int
