@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/scripts.js" defer></script>
 </head>
 <body>
     <div>
         <% if(folder){ %>
             <div><%= folder.name %></div>
+
+            <div><button onclick="toggleForm()" type="button">Add folder</button> </div>
             
         <% } %>
+    </div>
+    <div id="folderForm" style="display: none;">
+        <form method="post" action="/drive/create">
+            <div>Create Folder</div>
+            <label for="name">Folder Name</label>
+            <input type="text" name="name">
+            <button type="submit">Create</button>
+
+        </form>
+
     </div>
 </body>
 </html>
