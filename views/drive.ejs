@@ -20,14 +20,16 @@
                     </div>
                 <% } %>
             <% } %>
-            <% if(folder.file.length > 0){ %>
-                <% for(let i=0;i< folder.file.length;i++){ %>
-                    <div style="margin-left: 20px;margin-top: 10px; margin-bottom: 10px;">
-                        <a href="/drive/file/<%= folder.file[i].id %>" >
-                            <%= folder.file[i].name %>
-                        </a>
-                    
-                    </div>
+            <% if(folder.file){ %>
+                <% if(folder.file.length > 0){ %>
+                    <% for(let i=0;i< folder.file.length;i++){ %>
+                        <div style="margin-left: 20px;margin-top: 10px; margin-bottom: 10px;">
+                            <a href="/drive/file/<%= folder.file[i].id %>" >
+                                <%= folder.file[i].name %>
+                            </a>
+                        
+                        </div>
+                    <% } %>
                 <% } %>
             <% } %>
 
