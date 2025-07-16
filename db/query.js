@@ -44,10 +44,10 @@ async function createFile(fileName,parentid){
             parentid: parentid
         },
         select:{
-            id:true
+            parentid:true
         }
     });
-    return file.id;
+    return file.parentid;
 }
 
 async function fetchUserByName(username) {

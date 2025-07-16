@@ -1,4 +1,4 @@
-const { fetchFolderByID, createFolder } = require("../db/query");
+const { fetchFolderByID, createFolder, createFile } = require("../db/query");
 
 const loadDrive=async(req,res)=>{
     const folderID=req.params.id;
@@ -14,4 +14,15 @@ const createFolderDrive=async(req,res)=>{
 
 }
 
-module.exports={loadDrive,createFolderDrive};
+const createFileDrive=async (req,res)=>{
+    if (!req.file) {
+         return res.status(400).send('No file uploaded');
+         }
+    
+    const parent = createFile(req.file.filename,req.body.parentid,req.file.size);
+    res.redirect("/drive/" + parent);
+    
+    
+}
+
+module.exports={loadDrive,createFolderDrive,createFileDrive};
